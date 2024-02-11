@@ -1,0 +1,10 @@
+iCMR(c1, c2, threshold)
+{
+  if maxDistance(c1, c2) < threshold 
+  { 
+    return c1
+  }
+  meanCurve1 = CMR(c1, c2)
+  meanCurve2 = CMR(c2, c1)
+  return iCMR(meanCurve1, meanCurve2)
+}
