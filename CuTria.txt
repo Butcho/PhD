@@ -1,0 +1,18 @@
+CuTria(c1, c2, samplingDistance)
+{
+  pointsC1 = getPoints(c1, samplingDistance) -- get vertices and sampled points (if needed)
+  pointsC2 = getPoints(c2, samplingDistance) -- get vertices and sampled points (if needed)
+  if pointsC1.count() <> pointsC2.count
+  {
+    error
+  }
+  for i in pointsC1 
+  {
+    CuTriaPointSet += getMiddlePoint(pointsC1(i), pointsC2(i))
+    if pointsC1(i+1).exist 
+    {
+      CuTriaPointSet += getMiddlePoint(pointsC1(i), pointsC2(i), pointsC1(i+1), pointsC2(i+1))
+    }
+  }
+  return CuTriaPointSet  
+}
