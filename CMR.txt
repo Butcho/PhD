@@ -1,0 +1,18 @@
+CMR(c1, c2)
+{
+  pointsC1 = samplePoints(c1) 
+  for i in pointsC1
+  {
+    closestPoints = getClosestPoints(pointsC1(i), c2)
+    for j in (closestPoints order by length asc)
+    {
+      lineSegment = line[pointsC1(i), closestPoints(j)]
+      if lineSegment not intersect c1
+      {
+        CMRPointSet += getMiddlePoint(lineSegment)
+        exit loop
+      }
+    }
+  }
+  return CMRPointSet
+}
