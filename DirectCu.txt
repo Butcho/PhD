@@ -1,0 +1,15 @@
+DirectCu(c1, c2, directionalCurve)
+{
+  pointsDC = samplePoints(directionalCurve) 
+  for i in pointsDC
+  {
+    nLine = getNormalLine(pointsDC(i), directionalCurve) -- get normal curve to the directional curve
+    pointC1 = getIntersectPoint(nLine, c1)
+    pointC2 = getIntersectPoint(nLine, c2)
+    if pointC1.exist and pointC2.exist 
+    {
+      DirectCuPointSet += getMiddlePoint(pointC1, pointC2)
+    }
+  }
+  return DirectCuPointSet
+}
