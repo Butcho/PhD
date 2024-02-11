@@ -1,0 +1,18 @@
+IncirCu(c1, c2) 
+{
+  pointsC1 = samplePoints(c1)
+  for i in pointsC1
+  {
+    nLine = getNormalLine(pointsC1(i))
+    circle = getTangentCircle(c1, c2, nLine) -- tangent to c1 and c2, center point on nLine
+    IncirCuC1PointSet += getCenterPoint(circle)
+  }
+  pointsC2 = samplePoints(c2)
+  for i in pointsC2
+  {
+    nLine = getNormalLine(pointsC2(i))
+    circle = getTangentCircle(c2, c1, nLine) -- tangent to c1 and c2, center point on nLine
+    IncirCuC2PointSet += getCenterPoint(circle)
+  }
+  return union(IncirCuC1PointSet, IncirCuC2PointSet)
+}
